@@ -30,7 +30,8 @@ Kommentaren vor allem in App.js zu finden.
 2. Klickt man auf den *Done*-Button eines Tasks wird dieser aus der Liste entfernt (und natürlich auch von Backend-Server). 
 3. Die Task Beschreibungen müssen eindeutig (bzw. einmalig) sein.
 
-Anstehende Aufgaben:
+### Anstehende Aufgaben
+
 - Erweiterung der Funktionalität durch die Lernenden
 - Alternatives Backend für eine VM (WAR Konfiguration)
 - Test Umbegung mit Unit-Tests erweitern
