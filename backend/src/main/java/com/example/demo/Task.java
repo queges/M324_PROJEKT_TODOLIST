@@ -1,22 +1,27 @@
 package com.example.demo;
 
+import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.data.annotation.Id;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import lombok.Getter;
+import lombok.Setter;
+
+
 /** the simplest task 
  * 
  * @author luh
  */
+@Entity
+@Getter @Setter
 public class Task {
-	
-	private String taskdescription; // must have the EXACT name as his React state property and may not be ignored!
-
-	public Task() {
-    }
-
-	public String getTaskdescription() { // do not apply camel-case here! Its a Bean!
-		return taskdescription;
-	}
-
-	public void setTaskdescription(String taskdescription) { // do not apply camel-case here! Its a Bean!
-		this.taskdescription = taskdescription;
-	}
-
+    
+    @Id
+    @GeneratedValue(strategy = jakarta.persistence.GenerationType.AUTO)
+    private Long id;
+ 
+    @NotBlank
+    private String taskdescription; // must have the EXACT name as his React state property and may not be ignored!
+ 
 }
