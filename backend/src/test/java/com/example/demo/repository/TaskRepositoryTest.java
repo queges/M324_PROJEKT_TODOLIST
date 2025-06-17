@@ -1,33 +1,36 @@
 package com.example.demo.repository;
 
-import org.junit.runner.RunWith;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import com.example.demo.repository.TaskRepository;
+import java.util.Optional;
 
-import com.example.demo.model.Task;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import static org.junit.Assert.assertNotNull;
-
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import com.example.demo.Task;
 
 @DataJpaTest
 public class TaskRepositoryTest {
+  
+  @Autowired
+  private TaskRepository taskRepository;
 
-    @Autowowired
-    TaskRepository taskRepository;
+  @Test
+  public void testAddFind() {
+    final String DESCRIPTION = "demo";
+    Task t = new Task();
+    t.setTaskdescription(DESCRIPTION);
+    taskRepository.save(t);
+    
+    assertNotNull(t.getId());
+    assertEquals(DESCRIPTION, t.getTaskdescription());
 
-    @Test
-    public void testAddFind() {
+    Optional<Task> savedTask = taskRepository.findById(t.getId());
+    assertFalse(savedTask.isEmpty(), "should not be empty");
 
-        Task t = new Task();
-        t.setTaskdescription("demo");
-        taskRepository.save(t);
-
-        assertNotNull(t.getId());
-    }
+    assertEquals(DESCRIPTION, savedTask.get().getTaskdescription());
+  }
 }
