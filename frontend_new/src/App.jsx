@@ -55,7 +55,7 @@ function App() {
   */
   const handleDelete = (event, id) => {
     console.log("Sending task description to delete on Spring-Server: "+taskdescription);
-    fetch("http://localhost:8080/task/${id}", { // API endpoint (the complete URL!) to delete an existing taskdescription in the list
+    fetch(`http://localhost:8080/task/${id}`, { // API endpoint (the complete URL!) to delete an existing taskdescription in the list
       method: "DELETE",
       headers: {
         "Content-Type": "application/json"
