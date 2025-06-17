@@ -54,8 +54,7 @@ function App() {
   ** In this case if the task with the unique taskdescription is found on the server, it will be removed from the list.
   */
   const handleDelete = (event, id) => {
-    console.log("Sending task description to delete on Spring-Server: "+taskdescription);
-    fetch("http://localhost:8080/task/${id}", { // API endpoint (the complete URL!) to delete an existing taskdescription in the list
+    fetch(`http://localhost:8080/task/${id}`, { // API endpoint (the complete URL!) to delete an existing taskdescription in the list
       method: "DELETE",
       headers: {
         "Content-Type": "application/json"

@@ -41,10 +41,11 @@ public class TaskController {
 	}
 
 	@CrossOrigin
-	@DeleteMapping("/{id}")
-	public ResponseEntity delTask(@PathVariable Long id) {
-		System.out.println("API EP '/delete': '" + id + "'");
-    taskRepository.deleteById(id);
-		return ResponseEntity.ok().build();
-	}
+  	@DeleteMapping("/{id}")
+  	public String delTask(@PathVariable Long id) {
+  	  System.out.println("API EP '/delete': '" + id + "'");    
+  	  taskRepository.deleteById(id);
+	
+  	  return "redirect:/";
+  	}
 }
