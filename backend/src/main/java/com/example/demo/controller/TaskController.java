@@ -32,10 +32,10 @@ public class TaskController {
 
 	@CrossOrigin
 	@PostMapping
-	public String addTask(@RequestBody String taskdescription) {
-		System.out.println("API EP '/tasks': '" + taskdescription + "'");
+	public String addTask(@RequestBody Task task) {
+		System.out.println("API EP '/tasks': '" + task.getTaskdescription() + "'");
 		Task t = new Task();
-    t.setTaskdescription(taskdescription);
+    t.setTaskdescription(task.getTaskdescription());
     taskRepository.save(t);
     return "redirect:/";
 	}
